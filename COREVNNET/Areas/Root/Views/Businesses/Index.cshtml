@@ -1,0 +1,42 @@
+﻿@model IEnumerable<COREVNNET.Areas.Root.Models.DataModels.Business>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Cập Nhật", "Update")
+</p>
+<p >@Html.Raw(TempData["err"])</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusinessId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusinessName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BusinessId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BusinessId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BusinessId })|
+            @Html.ActionLink("Danh sách các action", "Index", "Permissions", new { id= item.BusinessId},null)
+
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,21 @@
+﻿@using COREVNNET.Models.Query
+@model List<AdminVsPost>
+@{
+    ViewBag.Title = "Giới thiệu";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="thumbnail">
+        <h2 class="blog-post-title">@item.Post.Title</h2>
+        <p class="blog-post-meta">Ngày gửi: @item.Post.DateCreate.ToString("dd/MM/yyyy") /<span class="glyphicon glyphicon-user"></span>  @item.Administrator.Username</p>
+        <p>
+            @Html.Raw(@item.Post.Content)
+            <script>
+            moment().format();
+            </script>
+            
+        </p>
+    </div>
+}

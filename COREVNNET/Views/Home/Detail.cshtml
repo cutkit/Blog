@@ -1,0 +1,17 @@
+﻿@using COREVNNET.Models.Query
+@model List<AdminVsPost>
+
+
+
+@foreach (var item in Model)
+{
+    ViewBag.Title = item.Post.Title;
+    <div class="thumbnail" id="noborderdetail">
+        <h2 class="blog-post-title">@item.Post.Title</h2>
+        <p class="blog-post-meta">Ngày gửi: @item.Post.DateCreate.ToString("dd/MM/yyyy") /<span class="glyphicon glyphicon-user"></span> @item.Administrator.Username  / @item.Post.ViewNo</p>
+        <p >
+            @Html.Raw(@item.Post.Content)
+            <div class="fb-comments" data-href="http://corevn.net" data-numposts="5"></div>
+        </p>
+    </div>
+}

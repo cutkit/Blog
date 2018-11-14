@@ -1,0 +1,28 @@
+﻿@using COREVNNET.Models.Query
+@model List<AdminVsPost>
+@{
+    ViewBag.Title = "Tech";
+}
+@foreach (var item in Model)
+{
+    <div class="thumbnail">
+        <a href="/bai-viet/@COREVNNET.Models.ConvertTitleSeo.ConvertTitle(item.Post.Title)-@item.Post.PostId"><h2 class="blog-post-title">@item.Post.Title  <span class="glyphicon glyphicon-share-alt"></span></h2></a>
+        <p class="blog-post-meta">Ngày gửi: @item.Post.DateCreate.ToString("dd/MM/yyyy") /<span class="glyphicon glyphicon-user"></span>  @item.Administrator.Username</p>
+        <div class="row">
+            <div class="col-md-7">
+                <img src="@item.Post.Picture" class="img-responsive" alt="Cinque Terre" width="500" height="367">
+            </div>
+            <div class="col-md-5">
+                <span>@Html.Raw(@item.Post.Brief).....</span>
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+
+
+
+

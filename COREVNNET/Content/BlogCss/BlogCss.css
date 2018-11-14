@@ -1,0 +1,129 @@
+﻿/*
+ * Globals
+ */
+
+body {
+    font-family: Arial;
+    color: #555;
+    height:800px;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    margin-top: 0;
+    font-family: Arial;
+    font-weight: normal;
+    color: #333;
+}
+
+/*chinh tex Home*/
+.navbar-header .navbar-brand {
+    color: White;
+    font-family: Magneto;
+    font-size: 170%;
+}
+
+    .navbar-header .navbar-brand:hover {
+        color: black;
+    }
+
+    .navbar-header .navbar-brand:focus {
+        color: orangered;
+    }
+
+
+/*
+  Override Bootstrap's default container.
+
+* Masthead for nav
+ */
+.blog-masthead {
+    background-color: purple;
+    font-size: 100%;
+}
+
+    .blog-masthead li {
+        margin-left: 39px;
+    }
+
+/* Nav links */
+
+.nav.navbar-nav li a {
+    color: white;
+    font-family: Magneto;
+}
+
+    .nav.navbar-nav li a:hover {
+        color: black;
+    }
+
+    .nav.navbar-nav li a:focus {
+        color: orange;
+    }
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.blog-title {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 60px;
+    font-weight: normal;
+}
+
+.blog-description {
+    font-size: 20px;
+    color: #999;
+}
+
+
+/*
+ * Main column and sidebar layout
+ */
+.col-md-9 {
+    border-right: 0.5px solid purple;
+    margin-top: 17px;
+}
+
+.col-md-3 {
+    margin-top: 17px;
+}
+/*chỉnh phần ngày đăng, người đăng*/
+.blog-post-meta {
+    color: black;
+}
+/*chỉnh title bài viết*/
+.blog-post-title {
+    font-size: 170%;
+}
+
+/*
+ * Footer
+ */
+.blog-footer {
+    text-align: right;
+    background-color: White;
+    border-top: 1px solid purple;
+    margin-top: 17px;
+    height: 29px;
+}
+
+    .blog-footer p:last-child {
+        padding: 17px 17px;
+        font-family: Magneto;
+        color: purple;
+    }
+#noborderdetail{
+    border:none;
+    
+}

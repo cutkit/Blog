@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Cấp quyền cho người dùng";
+}
+
+
+<table class="table table-bordered">
+    <tr class="danger">
+        <th>Trở về danh mục người dùng</th>
+        <th>Đang cấp quyền cho người dùng</th>
+    </tr>
+    <tr class="success">
+        <td><a href="/Root/Administrators/Index"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a></td>
+        <td style="align-items: center">@ViewBag.usergrant <img src="@ViewBag.usergrantimg" class="img-circle" alt="User Image" width="70" height="70" /></td>
+    </tr>
+</table>
+
+
+@*<h2 style="padding-top: 15px;">
+    <a href="/Admin/BlogAdministrators/Index">Danh mục người dùng</a>
+    &gt;&gt;Cấp quyền cho người dùng <b style="color:blue">@ViewBag.usergrant</b>
+</h2>*@
+
+<hr />
+<p><div id="msg"></div></p>
+<div class="col-md-5">
+  
+    <h4>Danh sách nghiệp vụ</h4>
+    <div class="dropdown">
+        @Html.DropDownList("businessController", (IEnumerable<SelectListItem>)ViewBag.items, new { size = 10, onchange = "getPermissions('/Grant/getPermissions/'+this.value,'" + Session["usergrant"] + "');",  @class = "form-control" })
+    </div>
+    </div>
+
+<div class="col-md-4">
+
+    <h4>Danh sách quyền hạn</h4>
+    <div class="form-group" id="listaction"></div>
+   
+</div>
+
+<script>
+    function getPermissions(action, usergrant) {
+        $.ajax({
+            method: "GET",
+            url: action,
+            data: { usertemp: usergrant },
+            success: function (data) {
+                $('#listaction').html('');
+                $.each(data, function (index, value) {
+                    if (value.IsGranted)
+                        $('#listaction').append("<input type='CheckBox' checked onchange = 'Update(" + "\"/Grant/updatePermission/\"+this.value,\"@Session["usergrant"]\")' value ='" + value.PermissionId + "'>" + value.Description + "<br>");
+                    else
+                        $('#listaction').append("<input type='CheckBox' onchange='Update(" + "\"/Grant/updatePermission/\"+this.value,\"@Session["usergrant"]\")' value = '" + value.PermissionId + "'> " + value.Description + "<br>");
+                });
+            }
+        })
+    }
+    function Update(action, usergrant) {
+        $.ajax({
+            method: "GET",
+            url: action,
+            data: { usertemp: usergrant },
+            success: function (data) {
+                $("#msg").html(data);
+            }
+        })
+    }
+</script>
+

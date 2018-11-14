@@ -1,0 +1,115 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap core CSS -->
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+    <!-- Custom styles for this template -->
+    
+    <link href="~/Content/BlogCss/BlogCss.css" rel="stylesheet" />
+   
+</head>
+
+<body>
+
+
+    @* javascrip facebook *@
+    <div id="fb-root"></div>
+    <script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    @* ---------------------------------------- *@
+    <div class="navbar navbar-inverse navbar-fixed-top blog-masthead">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Corevn.net", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("CÔNG NGHỆ & THỦ THUẬT", "Tech", "Home")</li>
+                    <li>@Html.ActionLink("CUỘC SỐNG", "Life", "Home")</li>
+                    <li>@Html.ActionLink("NGHỊCH NGỢM", "Naughty", "Home")</li>
+                    <li>@Html.ActionLink("GIỚI THIỆU", "About", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--phần head!-->
+    <div class="container" >
+        <div class="row">
+            
+              
+
+            <div class="col-md-9">
+                @RenderBody()
+                <!-- /.blog-main -->
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-book"></span> FACEBOOK</div>
+                    <div class="fb-page" data-href="https://www.facebook.com/corevnnet-415835905446507/" data-tabs="timeline" data-height="270" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/corevnnet-415835905446507/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/corevnnet-415835905446507/">corevn.net</a></blockquote></div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-tags"></span><span> &nbsp </span>  DANH MỤC
+                        @Html.Action("PanelRight", "Home")
+
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-flag"></span><span> &nbsp </span> THỐNG KÊ
+                        <div class="panel-body">Tổng truy cập: @Session["countvisitor"] </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    <!-- /.row -->
+
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+        <P class="last-child">
+            COPYRIGHT &copy; @DateTime.Now.Year COREVN.NET - LDT
+        </P>
+        
+    </footer>
+
+
+    @*<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->*@
+    @Scripts.Render("~/bundles/jquery")
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

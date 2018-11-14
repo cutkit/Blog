@@ -1,0 +1,127 @@
+﻿@if (Session["username"]==null)
+{
+    Response.Redirect("~/Root/Home/Signin");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Amin_Corevn</title>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Scripts.Render("~/bundles/jquery")
+
+    <!-- Bootstrap core CSS -->
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @* ck  *@
+    <script src="~/Areas/Root/Content/CK/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/Root/Content/CK/ckeditor/ckeditor.js"></script>
+
+    <!-- Custom styles for this template -->
+
+    <link href="~/Areas/Root/Content/BlogAdminCSS.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    @* layout Administrator *@
+    <div class="navbar navbar-inverse navbar-fixed-top blog-masthead">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Corevn.net", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" ><span class="glyphicon glyphicon-user"></span> @Session["username"] <span class="caret "></span></a>
+                        <ul class="dropdown-menu" style="background-color:purple">
+                            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Cài Đặt</a></li>
+                           
+                            <li class="divider"></li>
+                            
+                            <li><a href="/Root/Home/Signout"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--phần head!-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                @* hiển thị người dùng *@
+                <div class="thumbnail" style="background-color:aliceblue; border:none">
+                    <img src="@Session["avatar"]" class="img-circle" alt="User Image" width="70" height="70"/>
+                    <div class="caption" style="text-align:center">
+                        <small >@Session["fullname"]</small><br />
+                        <small>@Session["email"]</small>
+                    </div>
+                </div>
+        
+               @* danh sách quyền quản trị *@
+                <div class="panel panel-success">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-book"></span> CHỦ ĐỀ & BÀI VIẾT</div>
+                    <div class="panel-body"><a href="/Root/Categories">Danh Mục Chủ Đề</a></div>
+                    <div class="panel-body"><a href="/Root/Posts">Danh Mục Bài Viết</a></div>
+                </div>
+               @* phân quyền *@
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-tree-conifer"></span> PHÂN QUYỀN ADMIN</div>
+                    <div class="panel-body"><a href="/Root/Administrators">Danh Mục Administrator</a></div>
+                    <div class="panel-body"><a href="/Root/Businesses">Danh Mục Nghiệp Vụ</a></div>
+                    <div class="panel-body"><a href="/Root/Permissions">Danh Mục Các Quyền</a></div>
+                </div>
+             
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+                <!-- /.blog-main -->
+            </div>
+            
+        <!-- /.blog-sidebar -->
+
+        </div><!-- /.row -->
+
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+        <P class="last-child">
+            COPYRIGHT &copy; @DateTime.Now.Year LÊ DUY TÙNG
+        </P>
+
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        //request server => timeout
+        window.setInterval(function () {
+            $.get("/Root/Home/Alive", function (data) {
+                //
+            });
+        }, 170000);
+    </script>
+</body>
+</html>
